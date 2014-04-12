@@ -1,7 +1,8 @@
 <div>
   <h1>Calendar</h1>
+  Search: <input ng-model="matchSearchQuery">
   <ul>
-    <li ng-repeat="match in matches">
+    <li ng-repeat="match in matches | filter:matchSearchQuery">
             {{match.homeTeam}} - {{match.awayTeam}}
             <p>{{match.date}}</p>
         </li>

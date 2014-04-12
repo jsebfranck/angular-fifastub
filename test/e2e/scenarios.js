@@ -10,31 +10,24 @@ describe('my app', function() {
     expect(browser.getLocationAbsUrl()).toMatch("/lastMatch");
   });
 
-
-  describe('lastMatch', function() {
-
-    beforeEach(function() {
-      browser.get('index.html#/lastMatch');
-    });
-
-    it('should render view1 when user navigates to /view1', function() {
-      expect(element.all(by.css('[ng-view] p')).first().getText()).
-        toMatch(/partial for view 1/);
-    });
-
-  });
-
-
   describe('calendar', function() {
 
     beforeEach(function() {
       browser.get('index.html#/calendar');
     });
 
-    it('should render view2 when user navigates to /view2', function() {
-      expect(element.all(by.css('[ng-view] p')).first().getText()).
-        toMatch(/partial for view 2/);
-    });
+    it('should filter the matches list as user types into the search box', function() {
+      var matches = element.all(by.repeater('match in matches'));
+      var query = element(by.model('matchSearchQuery'));
 
+      expect(matches.count()).toBe(3);
+
+      query.sendKeys('Bastia');
+      expect(matches.count()).toBe(1);
+
+      query.clear();
+      query.sendKeys('toulouse');
+      expect(matches.count()).toBe(1);
+    });
   });
 });
