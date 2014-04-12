@@ -12,5 +12,5 @@ angular.module('myApp', [
 config(['$routeProvider', function($routeProvider) {
   $routeProvider.when('/lastMatch', {templateUrl: 'partials/lastMatch.html', controller: 'LastMatchController'});
   $routeProvider.when('/calendar', {templateUrl: 'partials/calendar.html', controller: 'CalendarController'});
-  $routeProvider.otherwise({redirectTo: '/match'});
+  $routeProvider.otherwise({redirectTo: '/lastMatch'});
 }]);
