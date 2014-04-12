@@ -7,7 +7,7 @@ describe('controllers', function(){
 
   it('should have one last match initialized', inject(function($controller) {
     var scope = {},
-        ctrl = $controller('LastMatchController');
+        ctrl = $controller('LastMatchController', {$scope:scope});
 
     expect(scope.match).toBeDefined();
     expect(scope.match.homeTeam).toBe('Olympique Lyonnais');
@@ -15,7 +15,7 @@ describe('controllers', function(){
 
   it('should have three matches in the calendar', inject(function($controller) {
     var scope = {},
-        ctrl = $controller('CalendarController');
+        ctrl = $controller('CalendarController', {$scope:scope});
 
     expect(scope.matches).toBeDefined();
     expect(scope.matches.length).toBe(3);
