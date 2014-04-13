@@ -14,6 +14,8 @@ app.use(function(req, res, next) {
 });
 
 app.get('/match/lastMatch', matches.getLastMatch);
+app.get('/match/lastMatch2', matches.getLastMatch2);
+app.get('/match/createNewMatch', matches.createNewMatch);
 
 app.listen(3000);
 

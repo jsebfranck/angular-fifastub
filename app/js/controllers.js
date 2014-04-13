@@ -5,9 +5,13 @@
 var appControllers = angular.module('myApp.controllers', []);
 
 appControllers.controller('LastMatchController', ['$scope', '$http', function($scope, $http) {
-  $http.get('http://localhost:3000/match/lastMatch').success(function(data) {
-    $scope.match = data;
-  });
+  $http.get('http://localhost:3000/match/lastMatch')
+       .success(function(data) {
+         $scope.match = data;
+       })
+       .error(function(response) {
+         console.log('Cannot access to server', response);
+       });
 }]);
 
 appControllers.controller('CalendarController', ['$scope', '$http', function($scope, $http) {
