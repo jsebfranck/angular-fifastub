@@ -7,6 +7,12 @@ Project build from angular-seed project.
 npm install
 ```
 
+### Install and run mongodb
+```
+brew install mongodb
+mongod
+```
+
 ### Run the Application
 
 ```

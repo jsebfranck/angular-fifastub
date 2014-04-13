@@ -1,23 +1,12 @@
-var db = require("mongojs");
+var mongojs = require("mongojs");
 
-var databaseUrl = "sampledb";
-var collections = ["things"]
-db.connect(databaseUrl, collections);
+var db = mongojs("sampledb", ["things"]);
 
 exports.getLastMatch = function(req, res) {
-  res.send({'homeTeam': 'Olympique Lyonnais',
-            'awayTeam': 'Paris SG',
-            'homeScore': 0,
-            'awayScore': 1,
-            'date': '2014-04-13'
-           });
-};
-
-exports.getLastMatch2 = function(req, res) {
-    db.things.find('', function(err, matches) {
-	if( err || !matches) console.log("No matches found");
+  db.things.find().limit(1, function(err, matches) {
+	if( err || !matches || matches.length < 1) console.log("No matches found");
 	else {
-	  res.end(matches);
+	  res.send(matches[0]);
 	}
   });
 };
