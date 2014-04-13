@@ -30,3 +30,17 @@ appControllers.controller('CalendarController', ['$scope', '$http', function($sc
      'date': '2014-04-26'
     }];
 }]);
+
+appControllers.controller('CreateNewMatchController', ['$scope', '$http', function($scope, $http) {
+  $scope.createNewMatch = function() {
+    console.log('client side, create new match : ', this.match);
+
+    $http.post('http://localhost:3000/match/createNewMatch', this.match)
+         .success(function(data) {
+           console.log('Match has been created');
+         })
+         .error(function(response) {
+           console.log('Match cannot be created', response);
+         });
+  };
+}]);

@@ -2,7 +2,7 @@ var express = require('express'),
     matches = require('./routes/matches');
 
 var app = express();
-
+app.use(express.json());
 app.use(function(req, res, next) {
     if (req.headers.origin) {
         res.header('Access-Control-Allow-Origin', '*');
@@ -14,7 +14,8 @@ app.use(function(req, res, next) {
 });
 
 app.get('/match/lastMatch', matches.getLastMatch);
-app.get('/match/createNewMatch', matches.createNewMatch);
+app.get('/match/all', matches.getAll);
+app.post('/match/createNewMatch', matches.createNewMatch);
 
 app.listen(3000);
 

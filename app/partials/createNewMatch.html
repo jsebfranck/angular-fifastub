@@ -1,0 +1,13 @@
+<div>
+    <h1>New match creation</h1>
+
+    <form ng-submit="createNewMatch()">
+        <p>Home : <input ng-model="match.homeTeam"/></p>
+        <p>Away : <input ng-model="match.awayTeam"/></p>
+        <p>Home score : <input ng-model="match.homeScore"/></p>
+        <p>Away score : <input ng-model="match.awayScore"/></p>
+        <p>Date : <input ng-model="match.date"/></p>
+
+        <input type="submit" value="Create"/>
+    </form>
+</div>
