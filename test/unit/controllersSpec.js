@@ -18,7 +18,7 @@ describe('Controllers', function() {
 
     beforeEach(inject(function(_$httpBackend_, $rootScope, $controller) {
       $httpBackend = _$httpBackend_;
-      $httpBackend.expectGET('match/lastMatch').respond(matchJson);
+      $httpBackend.expectGET('http://localhost:3000/match/lastMatch').respond(matchJson);
 
       scope = $rootScope.$new();
       ctrl = $controller('LastMatchController', {$scope: scope});

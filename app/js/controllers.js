@@ -5,7 +5,7 @@
 var appControllers = angular.module('myApp.controllers', []);
 
 appControllers.controller('LastMatchController', ['$scope', '$http', function($scope, $http) {
-  $http.get('match/lastMatch').success(function(data) {
+  $http.get('http://localhost:3000/match/lastMatch').success(function(data) {
     $scope.match = data;
   });
 }]);
