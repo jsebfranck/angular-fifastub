@@ -4,17 +4,13 @@
 
 var appControllers = angular.module('myApp.controllers', []);
 
-appControllers.controller('LastMatchController', function($scope) {
-  $scope.match = {
-    'homeTeam': 'Olympique Lyonnais',
-    'awayTeam': 'Paris SG',
-    'homeScore': 0,
-    'awayScore': 1,
-    'date': '2014-04-13'
-  };
-});
+appControllers.controller('LastMatchController', ['$scope', '$http', function($scope, $http) {
+  $http.get('match/lastMatch').success(function(data) {
+    $scope.match = data;
+  });
+}]);
 
-appControllers.controller('CalendarController', function($scope) {
+appControllers.controller('CalendarController', ['$scope', '$http', function($scope, $http) {
   $scope.matches = [
     {'homeTeam': 'Olympique Lyonnais',
      'awayTeam': 'Paris SG',
@@ -29,4 +25,4 @@ appControllers.controller('CalendarController', function($scope) {
      'awayTeam': 'Bastia',
      'date': '2014-04-26'
     }];
-});
+}]);
