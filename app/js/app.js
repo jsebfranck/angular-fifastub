@@ -12,5 +12,5 @@ angular.module('myApp', [
 config(['$routeProvider', function($routeProvider) {
   $routeProvider.when('/allMatches', {templateUrl: 'partials/allMatches.html', controller: 'AllMatchesController'});
   $routeProvider.when('/createNewMatch', {templateUrl: 'partials/createNewMatch.html', controller: 'CreateNewMatchController'});
-  $routeProvider.otherwise({redirectTo: '/lastMatch'});
+  $routeProvider.otherwise({redirectTo: '/allMatches'});
 }]);

@@ -4,42 +4,36 @@
 
 describe('Controllers', function() {
 
-  describe('LastMatchController', function() {
+  describe('AllMatchesController', function() {
     var scope, ctrl, $httpBackend;
 
-    var matchJson = {'homeTeam': 'Olympique Lyonnais',
+    var matchJson = [{'homeTeam': 'Olympique Lyonnais',
                      'awayTeam': 'Paris SG',
-                     'homeScore': 0,
-                     'awayScore': 1,
+                     'homeScore': 1,
+                     'awayScore': 0,
                      'date': '2014-04-13'
-                    };
+                    },
+                    {'homeTeam': 'Marseille',
+                     'awayTeam': 'Bastia',
+                     'homeScore': 2,
+                     'awayScore': 1,
+                     'date': '2010-04-01'
+                    }];
 
     beforeEach(module('myApp.controllers'));
 
     beforeEach(inject(function(_$httpBackend_, $rootScope, $controller) {
       $httpBackend = _$httpBackend_;
-      $httpBackend.expectGET('http://localhost:3000/match/lastMatch').respond(matchJson);
+      $httpBackend.expectGET('http://localhost:3000/match/all').respond(matchJson);
 
       scope = $rootScope.$new();
-      ctrl = $controller('LastMatchController', {$scope: scope});
+      ctrl = $controller('AllMatchesController', {$scope: scope});
       $httpBackend.flush();
     }));
 
-    it('should have one last match initialized', inject(function($controller) {
-      expect(scope.match).toBeDefined();
-      expect(scope.match.homeTeam).toBe('Olympique Lyonnais');
-    }));
-  });
-
-  describe('LastMatchController', function() {
-    beforeEach(module('myApp.controllers'));
-
-    it('should have three matches in the calendar', inject(function($controller) {
-      var scope = {},
-          ctrl = $controller('CalendarController', {$scope:scope});
-
+    it('should have two matches initialized', inject(function($controller) {
       expect(scope.matches).toBeDefined();
-      expect(scope.matches.length).toBe(3);
+      expect(scope.matches.length).toBe(2);
     }));
   });
 });
