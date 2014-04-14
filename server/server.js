@@ -13,7 +13,6 @@ app.use(function(req, res, next) {
     next();
 });
 
-app.get('/match/lastMatch', matches.getLastMatch);
 app.get('/match/all', matches.getAll);
 app.post('/match/createNewMatch', matches.createNewMatch);
 

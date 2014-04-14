@@ -10,8 +10,7 @@ angular.module('myApp', [
   'myApp.controllers'
 ]).
 config(['$routeProvider', function($routeProvider) {
-  $routeProvider.when('/lastMatch', {templateUrl: 'partials/lastMatch.html', controller: 'LastMatchController'});
-  $routeProvider.when('/calendar', {templateUrl: 'partials/calendar.html', controller: 'CalendarController'});
+  $routeProvider.when('/allMatches', {templateUrl: 'partials/allMatches.html', controller: 'AllMatchesController'});
   $routeProvider.when('/createNewMatch', {templateUrl: 'partials/createNewMatch.html', controller: 'CreateNewMatchController'});
   $routeProvider.otherwise({redirectTo: '/lastMatch'});
 }]);

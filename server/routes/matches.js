@@ -2,19 +2,11 @@ var mongojs = require("mongojs");
 
 var db = mongojs("sampledb", ["things"]);
 
-exports.getLastMatch = function(req, res) {
-  db.things.find().limit(1, function(err, matches) {
-	if( err || !matches || matches.length < 1) console.log("No matches found");
-	else {
-	  res.send(matches[0]);
-	}
-  });
-};
-
 exports.getAll = function(req, res) {
   db.things.find(function(err, matches) {
-	if( err || !matches || matches.length < 1) console.log("No matches found");
+	if( err || !matches || matches.length < 1) console.log('No matches found');
 	else {
+    console.log('Matches found count : ' + matches.length);
 	  res.send(matches);
 	}
   });
